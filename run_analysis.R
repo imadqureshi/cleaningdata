@@ -24,8 +24,7 @@ test_set<-read.table("../test/X_test.txt", stringsAsFactors=FALSE)
 test_label<-read.table("../test/y_test.txt", stringsAsFactors=FALSE)
 subject_train <- read.table("subject_train.txt", stringsAsFactors=FALSE)
 subject_test <- read.table("../test/subject_test.txt", stringsAsFactors=FALSE)
-y_train <- read.table("y_train.txt", stringsAsFactors=FALSE)
-y_test <- read.table("../test/y_test.txt", stringsAsFactors=FALSE)
+
 #start merging all data in one data set
 #first bring feature vector which will form the column names for all data
 data_set <- features
@@ -44,7 +43,7 @@ data_set <- rbind(data_set, training_set, test_set)
 data_set <- cbind(data_set, rbind(subject_train, subject_test))
 #change column name for the new column
 colnames(data_set)[562] <- "subject"
-data_set <- cbind(data_set, rbind(y_train, y_test))
+data_set <- cbind(data_set, rbind(training_label, test_label))
 colnames(data_set)[563] <- "activity"
 #Above completes step 1 of the homework.
 
